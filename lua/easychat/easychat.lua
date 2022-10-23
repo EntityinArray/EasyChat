@@ -638,7 +638,7 @@ if CLIENT then
 	-- TODO: Figure out how to check keyboard IME
 	function EasyChat.CanUseCEFFeatures()
 		if EC_FORCE_ALLOW_CEF:GetBool() then return true end
-		if not system.IsWindows() and not system.IsOSX() then return false end -- cef is awfully broken on linux / mac
+		if not system.IsWindows() and not system.IsOSX() and not system.IsLinux() then return false end -- cef is awfully broken on linux / mac -- not anymore
 		if BRANCH == "x86-64" or BRANCH == "chromium" then return true end -- chromium also exists in x86 and on the chromium branch
 		return jit.arch == "x64" -- when x64 and chromium are finally pushed to stable
 	end
